@@ -8,13 +8,13 @@ import { appWindow, PhysicalPosition, PhysicalSize } from '@tauri-apps/api/windo
 async function findWindow () {
   console.log('Sending command')
 
-  setInterval(async () => {
     // Get window position and size
     const [left, right, top, bottom] = await invoke('find_window')
+
     // Set window position and size
     appWindow.setPosition(new PhysicalPosition(await left + 6, await top + 33))
-    appWindow.setSize(new PhysicalSize(await right - await left - 12, await bottom - 40 - await top))
-  }, 100)
+    console.log((await right - await left) / 2)
+    appWindow.setSize(new PhysicalSize(Math.round((await right - await left) / 3.4), await bottom - 40 - await top))
 }
 </script>
 
