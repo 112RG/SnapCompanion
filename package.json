@@ -1,0 +1,34 @@
+{
+  "name": "snap-companion",
+  "private": true,
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "tauri dev",
+    "build": "tauri build",
+    "build:debug": "tauri build -d",
+    "build:vite": "vite build",
+    "dev:vite": "vite"
+  },
+  "dependencies": {
+    "vue": "^3.2.45",
+    "vue-router": "^4.1.6",
+    "@tauri-apps/api": "^1.2.0",
+    "pinia": "^2.0.28"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.34.0",
+    "@tauri-apps/cli": "^1.2.3",
+    "@vue/compiler-sfc": "^3.2.40",
+    "@vue/devtools": "^6.4.3",
+    "@vitejs/plugin-vue": "^4.0.0",
+    "concurrently": "^7.4.0",
+    "vite": "^4.2.1",
+    "eslint": "^8.30.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.3.0",
+    "eslint-plugin-promise": "^6.0.1",
+    "eslint-plugin-tailwindcss": "^3.8.3",
+    "eslint-plugin-vue": "^9.6.0"
+  }
+}
