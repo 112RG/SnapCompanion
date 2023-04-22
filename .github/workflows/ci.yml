@@ -87,8 +87,8 @@ jobs:
           name: SnapCompanion-${{ runner.platform }}
           if-no-files-found: error
           path: |
-          src-tauri/target/release/bundle/deb/*.deb
-          src-tauri/target/release/bundle/appimage/*.AppImage
+              src-tauri/target/release/bundle/deb/*.deb
+              src-tauri/target/release/bundle/appimage/*.AppImage
       - name: Upload artifacts windows
         if: matrix.platform == 'windows-latest'
         uses: actions/upload-artifact@v3
