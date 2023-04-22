@@ -9,7 +9,7 @@ use windows_sys::{
         UI::WindowsAndMessaging::{FindWindowA, GetWindowRect},
     },
 };
-
+#[cfg(target_os = "windows")]
 #[tauri::command]
 // Returns the marvel snap window position and size using the windows api
 fn find_window() -> (i32, i32, i32, i32) {
