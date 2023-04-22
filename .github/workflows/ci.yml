@@ -75,5 +75,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: SnapCompanion
-          path: target/release
+          path: src-tauri\target\release
           if-no-files-found: error
