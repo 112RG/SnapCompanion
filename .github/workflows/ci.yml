@@ -80,9 +80,28 @@ jobs:
         run: pnpm install
       - name: Build App
         run: pnpm run build
-      - name: Upload artifacts
+      - name: Upload artifacts linux
+        if: matrix.platform == 'ubuntu-latest'
         uses: actions/upload-artifact@v3
         with:
-          name: SnapCompanion
-          path: src-tauri\target\release
+          name: SnapCompanion-${{ runner.platform }}
           if-no-files-found: error
+          path: |
+          src-tauri/target/release/bundle/deb/*.deb
+          src-tauri/target/release/bundle/appimage/*.AppImage
+      - name: Upload artifacts windows
+        if: matrix.platform == 'windows-latest'
+        uses: actions/upload-artifact@v3
+        with:
+          name: SnapCompanion-${{ runner.platform }}
+          if-no-files-found: error
+          path: src-tauri\target\release\bundle\SnapCompanion.exe
+      - name: Upload artifacts macos
+        if: matrix.platform == 'macos-latest'
+        uses: actions/upload-artifact@v3
+        with:
+          name: SnapCompanion-${{ runner.platform }}
+          if-no-files-found: error
+          path: src-tauri/target/release/bundle/macos/SnapCompanion.app
+
+
