@@ -84,7 +84,7 @@ jobs:
         if: matrix.platform == 'ubuntu-latest'
         uses: actions/upload-artifact@v3
         with:
-          name: SnapCompanion-${{ runner.platform }}
+          name: SnapCompanion-linux
           if-no-files-found: error
           path: |
               src-tauri/target/release/bundle/deb/*.deb
@@ -93,15 +93,15 @@ jobs:
         if: matrix.platform == 'windows-latest'
         uses: actions/upload-artifact@v3
         with:
-          name: SnapCompanion-${{ runner.platform }}
+          name: SnapCompanion-windows
           if-no-files-found: error
-          path: src-tauri\target\release\bundle\SnapCompanion.exe
+          path: src-tauri\target\release\SnapCompanion.exe
       - name: Upload artifacts macos
         if: matrix.platform == 'macos-latest'
         uses: actions/upload-artifact@v3
         with:
-          name: SnapCompanion-${{ runner.platform }}
+          name: SnapCompanion-macos
           if-no-files-found: error
-          path: src-tauri/target/release/bundle/macos/SnapCompanion.app
+          path: src-tauri/target/release/bundle/macos/
 
 
