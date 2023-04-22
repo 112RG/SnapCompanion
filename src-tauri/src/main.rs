@@ -1,18 +1,32 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
-use std::ptr::null;
-use windows_sys::{
-    s,
-    Win32::{
-        Foundation::RECT,
-        UI::WindowsAndMessaging::{FindWindowA, GetWindowRect},
-    },
-};
+#[cfg(target_os = "macosx")]
+#[tauri::command]
+// Returns the marvel snap window position and size using the macosx api
+fn find_window() -> (i32, i32, i32, i32) {
+    return (0, 0, 0, 0);
+}
+
+#[cfg(target_os = "linux")]
+#[tauri::command]
+// Returns the marvel snap window position and size using the linux api
+fn find_window() -> (i32, i32, i32, i32) {
+    return (0, 0, 0, 0);
+}
 #[cfg(target_os = "windows")]
 #[tauri::command]
 // Returns the marvel snap window position and size using the windows api
 fn find_window() -> (i32, i32, i32, i32) {
+    use std::ptr::null;
+    use windows_sys::{
+        s,
+        Win32::{
+            Foundation::RECT,
+            UI::WindowsAndMessaging::{FindWindowA, GetWindowRect},
+        },
+    };
+
     let window_handle = unsafe { FindWindowA(null(), s!("Snap")) };
 
     let mut rect = RECT {
